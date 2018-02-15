@@ -13,7 +13,7 @@ namespace FindReplace.Models
     {
       _text = text;
       _find = find;
-      _replace = replace;
+      _replace = "<span class='red'>" + replace + "</span>";
     }
 
     public string GetText()

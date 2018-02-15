@@ -11,10 +11,10 @@
   <p>@Model.GetFind()</p><br>
 
   <h4>...and replace it with:</h4>
-  <p>@Model.GetReplace()</p><br>
+  <p>@Html.Raw(@Model.GetReplace())</p><br>
 
   <h4>Your Result:</h4>
-  <p>@Model.GetResult()</p>
+  <p>@Html.Raw(@Model.GetResult())</p>
 
   <p><a href="/">TAKE ME BACK</a></p>
 
