@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="well text-center">
+
+  <h4>Your Sentence:</h4>
+  <p>@Model.GetText()</p><br>
+
+  <h4>You wanted to find all:</h4>
+  <p>@Model.GetFind()</p><br>
+
+  <h4>...and replace it with:</h4>
+  <p>@Model.GetReplace()</p><br>
+
+  <h4>Your Result:</h4>
+  <p>@Model.GetResult()</p>
+
+  <p><a href="/">TAKE ME BACK</a></p>
+
+</div>

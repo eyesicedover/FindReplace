@@ -2,13 +2,14 @@ using System;
 
 namespace FindReplace.Models
 {
-  public class FindReplace
+  public class FindAndReplace
   {
     private string _text;
     private string _find;
     private string _replace;
+    private string _result;
 
-    public FindReplace(string text, string find, string replace)
+    public FindAndReplace(string text, string find, string replace)
     {
       _text = text;
       _find = find;
@@ -30,19 +31,33 @@ namespace FindReplace.Models
       return _replace;
     }
 
-    public int GetIndex()
+    public string GetResult()
     {
-      return _text.IndexOf(_find);
+      return _result;
     }
 
-    public string ReplaceAll()
+    public int GetIndex(int start)
     {
-      // while (true)
-      // {
-      //   int index = _text.
-      // }
+      string text = _text.Substring(start, _text.Length - start).ToLower();
+      return text.IndexOf(_find.ToLower()) + start;
+    }
 
-      return _text;
+    public void ReplaceAll()
+    {
+      string newText = "";
+      int lastIndex = 0;
+      while (true)
+      {
+        int index = GetIndex(lastIndex);
+        if(index < lastIndex)
+        {
+          break;
+        }
+        newText += _text.Substring(lastIndex, index - lastIndex) + _replace;
+        lastIndex = index + _find.Length;
+      }
+      newText += _text.Substring(lastIndex, _text.Length - lastIndex);
+      _result = newText;
     }
   }
 }

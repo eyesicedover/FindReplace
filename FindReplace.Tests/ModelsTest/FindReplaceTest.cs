@@ -10,7 +10,7 @@ namespace FindReplace.Models.Tests
     public void GetText_ConstructorTest()
     {
       //Arrange
-      FindReplace findReplace = new FindReplace("Great Big Text", "Big", "Large");
+      FindAndReplace findReplace = new FindAndReplace("Great Big Text", "Big", "Large");
 
       //Act
       string result = findReplace.GetText();
@@ -23,7 +23,7 @@ namespace FindReplace.Models.Tests
     public void GetFind_ConstructorTest()
     {
       //Arrange
-      FindReplace findReplace = new FindReplace("Great Big Text", "Big", "Large");
+      FindAndReplace findReplace = new FindAndReplace("Great Big Text", "Big", "Large");
 
       //Act
       string result = findReplace.GetFind();
@@ -36,7 +36,7 @@ namespace FindReplace.Models.Tests
     public void GetReplace_ConstructorTest()
     {
       //Arrange
-      FindReplace findReplace = new FindReplace("Great Big Text", "Big", "Large");
+      FindAndReplace findReplace = new FindAndReplace("Great Big Text", "Big", "Large");
 
       //Act
       string result = findReplace.GetReplace();
@@ -49,13 +49,26 @@ namespace FindReplace.Models.Tests
     public void GetIndex_ReturnIndex()
     {
       //Arrange
-      FindReplace findReplace = new FindReplace("Great Big Text", "Big", "Large");
+      FindAndReplace findReplace = new FindAndReplace("Great Big Text", "Big", "Large");
 
       //Act
-      int result = findReplace.GetIndex();
+      int result = findReplace.GetIndex(0);
 
       //Assert
       Assert.AreEqual(6, result);
+    }
+
+    [TestMethod]
+    public void ReplaceAll_ReplaceAllOccurrencesOfFind()
+    {
+      //Arrange
+      FindAndReplace findReplace = new FindAndReplace("BIg Great biG Text big", "Big", "Large");
+
+      //Act
+      string result = findReplace.ReplaceAll();
+
+      //Assert
+      Assert.AreEqual("Large Great Large Text Large", result);
     }
   }
 }
